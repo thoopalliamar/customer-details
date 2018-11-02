@@ -1,74 +1,133 @@
 package com.capgemini.employee.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Employee {
-	
-	private String empID;
-	private String empName;
-	private int	age;
-	private String officeName;
-	private String address;
-	private String mobileNo;
-	
-	//Getters and Setters for all the Fields
-	
-	public String getEmpID() {
+
+	@Id
+	private Long accountID;
+	private Long empID;
+	private String type;
+	private String CLASS;
+	private String holderName;
+	private String token;
+	private String cardType;
+	private String cardExpiry;
+	private String bankType;
+	private String bankRouting;
+	private int deletePending;
+
+	// Getters and Setters for all the fields
+	public Long getEmpID() {
 		return empID;
 	}
-	public void setEmpID(String empID) {
+
+	public void setEmpID(Long empID) {
 		this.empID = empID;
 	}
-	public String getEmpName() {
-		return empName;
+
+	public Long getAccountID() {
+		return accountID;
 	}
-	public void setEmpName(String empName) {
-		this.empName = empName;
+
+	public void setAccountID(Long accountID) {
+		this.accountID = accountID;
 	}
-	public int getAge() {
-		return age;
+
+	public String getType() {
+		return type;
 	}
-	public void setAge(int age) {
-		this.age = age;
+
+	public void setType(String type) {
+		this.type = type;
 	}
-	public String getOfficeName() {
-		return officeName;
+
+	public String getCLASS() {
+		return CLASS;
 	}
-	public void setOfficeName(String officeName) {
-		this.officeName = officeName;
+
+	public void setCLASS(String cLASS) {
+		CLASS = cLASS;
 	}
-	public String getAddress() {
-		return address;
+
+	public String getHolderName() {
+		return holderName;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+
+	public void setHolderName(String holderName) {
+		this.holderName = holderName;
 	}
-	public String getMobileNo() {
-		return mobileNo;
+
+	public String getToken() {
+		return token;
 	}
-	public void setMobileNo(String mobileNo) {
-		this.mobileNo = mobileNo;
+
+	public void setToken(String token) {
+		this.token = token;
 	}
-	
-	//All Args Constructer
-	
-	public Employee(String empID, String empName, int age, String officeName, String address, String mobileNo) {
+
+	public String getCardType() {
+		return cardType;
+	}
+
+	public void setCardType(String cardType) {
+		this.cardType = cardType;
+	}
+
+	public String getCardExpiry() {
+		return cardExpiry;
+	}
+
+	public void setCardExpiry(String cardExpiry) {
+		this.cardExpiry = cardExpiry;
+	}
+
+	public String getBankType() {
+		return bankType;
+	}
+
+	public void setBankType(String bankType) {
+		this.bankType = bankType;
+	}
+
+	public String getBankRouting() {
+		return bankRouting;
+	}
+
+	public void setBankRouting(String bankRouting) {
+		this.bankRouting = bankRouting;
+	}
+
+	public int getDeletePending() {
+		return deletePending;
+	}
+
+	public void setDeletePending(int deletePending) {
+		this.deletePending = deletePending;
+	}
+
+	// All Args Constructer
+	public Employee(Long empID, Long accountID, String type, String cLASS, String holderName, String token,
+			String cardType, String cardExpiry, String bankType, String bankRouting, int deletePending) {
 		super();
 		this.empID = empID;
-		this.empName = empName;
-		this.age = age;
-		this.officeName = officeName;
-		this.address = address;
-		this.mobileNo = mobileNo;
+		this.accountID = accountID;
+		this.type = type;
+		CLASS = cLASS;
+		this.holderName = holderName;
+		this.token = token;
+		this.cardType = cardType;
+		this.cardExpiry = cardExpiry;
+		this.bankType = bankType;
+		this.bankRouting = bankRouting;
+		this.deletePending = deletePending;
 	}
-	
-	//No Args Constructer
+
+	// No Args Constructer
 	public Employee() {
 		super();
 	}
-	
-	
-	
-	
-	
 
 }
