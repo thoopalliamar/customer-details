@@ -10,7 +10,7 @@ public class Employee {
 	private Long accountID;
 	private Long empID;
 	private String type;
-	private String CLASS;
+	private String classType;
 	private String holderName;
 	private String token;
 	private String cardType;
@@ -20,8 +20,18 @@ public class Employee {
 	private int deletePending;
 
 	// Getters and Setters for all the fields
+	
+	
 	public Long getEmpID() {
 		return empID;
+	}
+
+	public String getClassType() {
+		return classType;
+	}
+
+	public void setClassType(String classType) {
+		this.classType = classType;
 	}
 
 	public void setEmpID(Long empID) {
@@ -44,13 +54,7 @@ public class Employee {
 		this.type = type;
 	}
 
-	public String getCLASS() {
-		return CLASS;
-	}
 
-	public void setCLASS(String cLASS) {
-		CLASS = cLASS;
-	}
 
 	public String getHolderName() {
 		return holderName;
@@ -109,13 +113,13 @@ public class Employee {
 	}
 
 	// All Args Constructer
-	public Employee(Long empID, Long accountID, String type, String cLASS, String holderName, String token,
+	public Employee(Long empID, Long accountID, String type, String classType, String holderName, String token,
 			String cardType, String cardExpiry, String bankType, String bankRouting, int deletePending) {
 		super();
 		this.empID = empID;
 		this.accountID = accountID;
 		this.type = type;
-		CLASS = cLASS;
+		this.classType = classType;
 		this.holderName = holderName;
 		this.token = token;
 		this.cardType = cardType;
