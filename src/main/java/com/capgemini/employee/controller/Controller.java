@@ -46,7 +46,7 @@ public class Controller {
 
 		} catch (EmployeeAlreadyExist e) {
 			// This executes when the saving of the data fails
-			logger.error("The process is failed and returning the error trace-controller-/save");
+			logger.error("The process is failed and returning the error trace-(controller-/save)");
 			String error_message = e.getMessage();
 			return new ResponseEntity<String>(error_message, HttpStatus.CONFLICT);
 		}
@@ -58,7 +58,7 @@ public class Controller {
 	public ResponseEntity<?> viewEmp(@PathVariable Long accountId)
 			throws AccountNotFoundException, IncorrectInputException {
 
-		logger.info("The employee input is been fed to service layer from controller-viewEmp");
+		logger.info("The employee input is been fed to service layer from (controller-viewEmp)");
 		try {
 
 			Employee empObj = employeeService.viewEmp(accountId);

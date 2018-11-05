@@ -32,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		//Checking if the profile already exists in the datbase
 		if (employeeRepository.findByAccountID(employee.getAccountID()) == null) {
 			
-			logger.info("the employee does not exist in the database now fed to repository layer");
+			logger.info("The employee does not exist in the database now fed to repository layer");
 			// Here we touch the repo layer to save the data from the database
 			Employee savedEmployee = employeeRepository.save(employee);
 			
@@ -57,17 +57,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		//Checking if the employeID is empty or not numeric
 		if (empID != null&& empID == (Long)empID) {
-
+			logger.info("The input is correct ");
 			//Checking if the requested account exists or not in the database
 			if ((employeeRepository.findByAccountID(empID) != null)) {
-				
+				logger.info("The corresponding account exists in database");
 				// Here we touch the repository layer to get the data from the database
 				// retrivedEmployee is found and populated from database
 				Employee retrivedEmployee = employeeRepository.findByAccountID(empID);
 				
 				//Checking got Delete_pending value for 1
 				if(retrivedEmployee.getDeletePending()!=1) {
-					
+					logger.info("DeletePending()!=1");
 				logger.info("Returning the employee details from service layer");
 				//Returning the fetched value from database
 				return retrivedEmployee;
