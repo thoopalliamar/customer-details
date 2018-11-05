@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.capgemini.employee.domain.Employee;
 import com.capgemini.employee.exceptions.AccountNotFoundException;
 import com.capgemini.employee.exceptions.EmployeeAlreadyExist;
@@ -31,13 +30,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee saveEmp(Employee employee) throws EmployeeAlreadyExist {
 
 		if (employeeRepository.findByAccountID(employee.getAccountID()) == null) {
+			
 			logger.info("the employee does not exist in the database now fed to repository layer");
 			// Here we touch the repo layer to save the data from the database
 			Employee retrivedEmployee = employeeRepository.save(employee);
+			
 			logger.info(
 					"the given data is added into database and returing the data from service layer to controller layer");
 			return retrivedEmployee;
 		} else {
+			
 			logger.error(
 					"the given input already exits in the database (error caught in service layer-saveEmp method)");
 			throw new EmployeeAlreadyExist("The profile already exists in the database");
@@ -56,9 +58,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 			// retrivedEmployee is found and populated from database
 			if ((employeeRepository.findByAccountID(empID) != null)) {
 				Employee retrivedEmployee = employeeRepository.findByAccountID(empID);
+				
+				
 				if(retrivedEmployee.getDeletePending()!=1) {
 				logger.info("Returning the employee details from service layer");
 				return retrivedEmployee;
+				
 				}else {
 					logger.error("This accountId detail have delete_pending = 1 so not displayed");
 					throw new AccountNotFoundException("Delete_pending = 1");
