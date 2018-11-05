@@ -25,7 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		this.employeeRepository = employeeRepository;
 	}
 
-	// This method checks for existance in database and gives out error else saves
+	// This method checks for existence in database and gives out error else saves
 	// in database
 	@Override
 	public Employee saveEmp(Employee employee) throws EmployeeAlreadyExist {
@@ -56,9 +56,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 			// retrivedEmployee is found and populated from database
 			if ((employeeRepository.findByAccountID(empID) != null)) {
 				Employee retrivedEmployee = employeeRepository.findByAccountID(empID);
-
+				if(retrivedEmployee.getDeletePending()!=1) {
 				logger.info("Returning the employee details from service layer");
 				return retrivedEmployee;
+				}else {
+					throw new AccountNotFoundException("Delete_pending = 1");
+				}
 
 			} else {
 				logger.warn("This accountId details does not exist");

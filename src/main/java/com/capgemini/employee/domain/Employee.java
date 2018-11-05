@@ -2,6 +2,8 @@ package com.capgemini.employee.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
 public class Employee {
@@ -9,14 +11,23 @@ public class Employee {
 	@Id
 	private Long accountID;
 	private Long empID;
+	@JsonInclude(Include.NON_EMPTY)
 	private String type;
+	@JsonInclude(Include.NON_EMPTY)
 	private String classType;
+	@JsonInclude(Include.NON_EMPTY)
 	private String holderName;
+	@JsonInclude(Include.NON_EMPTY)
 	private String token;
+	@JsonInclude(Include.NON_EMPTY)
 	private String cardType;
+	@JsonInclude(Include.NON_EMPTY)
 	private String cardExpiry;
+	@JsonInclude(Include.NON_EMPTY)
 	private String bankType;
+	@JsonInclude(Include.NON_EMPTY)
 	private String bankRouting;
+	@JsonInclude(Include.NON_EMPTY)
 	private int deletePending;
 
 	// Getters and Setters for all the fields

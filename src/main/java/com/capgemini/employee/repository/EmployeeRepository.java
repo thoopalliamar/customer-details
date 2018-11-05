@@ -9,8 +9,8 @@ import com.capgemini.employee.domain.Employee;
 public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 	
 	//@Query("SELECT t.accountId FROM employee WHERE t.accountId = :accountId AND NOT NULL")
-	@Query("SELECT p FROM employee p WHERE p.accountId = :accountid AND NOT NULL'")
-	public Employee findByAccountID(@Param("accountId")Long accountId);
+//	@Query("SELECT type FROM employee")
+	public Employee findByAccountID(Long empID);
 	
 	
 
