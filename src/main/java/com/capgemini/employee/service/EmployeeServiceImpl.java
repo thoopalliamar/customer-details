@@ -60,11 +60,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 				logger.info("Returning the employee details from service layer");
 				return retrivedEmployee;
 				}else {
+					logger.error("This accountId detail have delete_pending = 1 so not displayed");
 					throw new AccountNotFoundException("Delete_pending = 1");
 				}
 
 			} else {
-				logger.warn("This accountId details does not exist");
+				logger.error("This accountId details does not exist");
 				throw new AccountNotFoundException("There is no account with this ID");
 			}
 
