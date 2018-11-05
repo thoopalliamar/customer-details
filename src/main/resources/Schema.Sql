@@ -1,3 +1,4 @@
+DROP TABLE employee;
 CREATE TABLE employee(
 
 ID 		LONG, 
