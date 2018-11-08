@@ -11,4 +11,5 @@ public interface CustomerService {
 
 	public Customer viewEmp(Long empID) throws AccountNotFoundException,IncorrectInputException;
 
+	public void delCustomer(Long empID) throws AccountNotFoundException,IncorrectInputException;
 }

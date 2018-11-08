@@ -77,5 +77,28 @@ public class CustomerController {
 
 		}
 	}
+	
+	@RequestMapping(value = "/delete/{accountId}", method = RequestMethod.DELETE)
+	public ResponseEntity<?> delCust(@PathVariable Long accountId)
+			throws AccountNotFoundException, IncorrectInputException {
+
+		logger.info("The employee input is been fed to service layer from (controller-delCust)");
+		try {
+
+			employeeService.delCustomer(accountId);
+
+			logger.info("The process is successful and returing the object back ");
+			return new ResponseEntity<String>("customer is deleted", HttpStatus.ACCEPTED);
+
+		} catch (AccountNotFoundException | IncorrectInputException execption) {
+
+			// This executes when the Viewing of the data fails
+			logger.error("The process is failed and returning the error trace-controller-/view");
+
+			String error_message = execption.getMessage();
+			return new ResponseEntity<String>(error_message, HttpStatus.CONFLICT);
+
+		}
+	}
 
 }
