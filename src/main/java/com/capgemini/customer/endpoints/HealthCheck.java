@@ -1,19 +1,19 @@
-package com.capgemini.employee.endpoints;
+package com.capgemini.customer.endpoints;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
-import com.capgemini.employee.repository.EmployeeRepository;
+import com.capgemini.customer.repository.CustomerRepository;
 
 @Component
 public class HealthCheck implements HealthIndicator {
 
-	private EmployeeRepository employeeRepository;
+	private CustomerRepository employeeRepository;
 	
 	@Autowired
-	public HealthCheck(EmployeeRepository employeeRepository){
+	public HealthCheck(CustomerRepository employeeRepository){
 		this.employeeRepository=employeeRepository;
 	}
 	

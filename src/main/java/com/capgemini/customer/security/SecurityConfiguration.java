@@ -1,4 +1,4 @@
-package com.capgemini.employee.security;
+package com.capgemini.customer.security;
 
 
 import org.springframework.context.annotation.Configuration;

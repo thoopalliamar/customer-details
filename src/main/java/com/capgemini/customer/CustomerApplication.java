@@ -1,12 +1,12 @@
-package com.capgemini.employee;
+package com.capgemini.customer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EmployeeApplication {
+public class CustomerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmployeeApplication.class, args);
+		SpringApplication.run(CustomerApplication.class, args);
 	}
 }

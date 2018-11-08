@@ -1,40 +1,41 @@
-package com.capgemini.employee.service;
+package com.capgemini.customer.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.capgemini.employee.domain.Employee;
-import com.capgemini.employee.exceptions.AccountNotFoundException;
-import com.capgemini.employee.exceptions.EmployeeAlreadyExist;
-import com.capgemini.employee.exceptions.IncorrectInputException;
-import com.capgemini.employee.repository.EmployeeRepository;
+
+import com.capgemini.customer.domain.Customer;
+import com.capgemini.customer.exceptions.AccountNotFoundException;
+import com.capgemini.customer.exceptions.CustomerAlreadyExist;
+import com.capgemini.customer.exceptions.IncorrectInputException;
+import com.capgemini.customer.repository.CustomerRepository;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
+public class CustomerServiceImpl implements CustomerService {
 
 	// Using logger SL4j to notify status in console
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	// Auto wiring the EmployeeRepository to use those methods in the Service layer
-	EmployeeRepository employeeRepository;
+	CustomerRepository employeeRepository;
 
 	@Autowired
-	public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+	public CustomerServiceImpl(CustomerRepository employeeRepository) {
 		this.employeeRepository = employeeRepository;
 	}
 
 	// This method checks for existence in database and gives out error else saves
 	// in database
 	@Override
-	public Employee saveEmp(Employee employee) throws EmployeeAlreadyExist {
+	public Customer saveEmp(Customer employee) throws CustomerAlreadyExist {
 
 		//Checking if the profile already exists in the datbase
 		if (employeeRepository.findByAccountID(employee.getAccountID()) == null) {
 			
 			logger.info("The employee does not exist in the database now fed to repository layer");
 			// Here we touch the repo layer to save the data from the database
-			Employee savedEmployee = employeeRepository.save(employee);
+			Customer savedEmployee = employeeRepository.save(employee);
 			
 			logger.info(
 					"the given data is added into database and returing the data from service layer to controller layer");
@@ -43,7 +44,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			//If the profile already exists the following executes
 			logger.error(
 					"the given input already exits in the database (error caught in service layer-saveEmp method)");
-			throw new EmployeeAlreadyExist("The profile already exists in the database");
+			throw new CustomerAlreadyExist("The profile already exists in the database");
 
 		}
 
@@ -52,7 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	// This methods checks for input data and gives out corresponding out catching
 	// the below exceptions
 	@Override
-	public Employee viewEmp(Long empID) throws AccountNotFoundException, IncorrectInputException {
+	public Customer viewEmp(Long empID) throws AccountNotFoundException, IncorrectInputException {
 		logger.info("Entered viewEmp method in Service layer");
 		
 		//Checking if the employeID is empty or not numeric
@@ -63,7 +64,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 				logger.info("The corresponding account exists in database");
 				// Here we touch the repository layer to get the data from the database
 				// retrivedEmployee is found and populated from database
-				Employee retrivedEmployee = employeeRepository.findByAccountID(empID);
+				Customer retrivedEmployee = employeeRepository.findByAccountID(empID);
 				
 				//Checking got Delete_pending value for 1
 				if(retrivedEmployee.getDeletePending()!=1) {

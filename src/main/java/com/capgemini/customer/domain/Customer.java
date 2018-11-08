@@ -1,4 +1,4 @@
-package com.capgemini.employee.domain;
+package com.capgemini.customer.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
-public class Employee {
+public class Customer {
 
 	@Id
 	private Long accountID;
@@ -124,7 +124,7 @@ public class Employee {
 	}
 
 	// All Args Constructer
-	public Employee(Long empID, Long accountID, String type, String classType, String holderName, String token,
+	public Customer(Long empID, Long accountID, String type, String classType, String holderName, String token,
 			String cardType, String cardExpiry, String bankType, String bankRouting, int deletePending) {
 		super();
 		this.empID = empID;
@@ -141,7 +141,7 @@ public class Employee {
 	}
 
 	// No Args Constructer
-	public Employee() {
+	public Customer() {
 		super();
 	}
 

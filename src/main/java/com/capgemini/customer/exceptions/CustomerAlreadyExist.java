@@ -1,13 +1,13 @@
-package com.capgemini.employee.exceptions;
+package com.capgemini.customer.exceptions;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class EmployeeAlreadyExist extends Exception {
+public class CustomerAlreadyExist extends Exception {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	public EmployeeAlreadyExist(String s) {
+	public CustomerAlreadyExist(String s) {
 		super(s);
 		logger.error("##############EmployeeAlreadyExist###################");
 	}

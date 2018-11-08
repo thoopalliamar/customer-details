@@ -1,4 +1,4 @@
-package com.capgemini.employee.endpoints;
+package com.capgemini.customer.endpoints;
 
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
