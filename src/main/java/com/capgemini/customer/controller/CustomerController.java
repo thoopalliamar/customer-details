@@ -73,7 +73,7 @@ public class CustomerController {
 			logger.error("The process is failed and returning the error trace-controller-/view");
 
 			String error_message = execption.getMessage();
-			return new ResponseEntity<String>(error_message, HttpStatus.CONFLICT);
+			return new ResponseEntity<String>(error_message, HttpStatus.NOT_FOUND);
 
 		}
 	}
