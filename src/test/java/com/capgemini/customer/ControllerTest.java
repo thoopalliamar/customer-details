@@ -55,18 +55,18 @@ public class ControllerTest {
 		Customer customer = new Customer(152943L, 109L, "fresher", "thoopalli_amarnath", "visa", "12/22", "private",
 				"direct", "direct", "helo", 2);
 
-		when(customerService.viewEmp(152943L)).thenReturn(customer);
+		when(customerService.viewCustomer(152943L)).thenReturn(customer);
 		
 		customerMockMvc.perform(get("/v1/view/152943")).andExpect(status().isFound());
-		verify(customerService, times(1)).viewEmp(152943L);
+		verify(customerService, times(1)).viewCustomer(152943L);
 		verifyNoMoreInteractions(customerService);
 		
 		customerMockMvc.perform(get("/v1/view")).andExpect(status().isNotFound());
-		verify(customerService, times(1)).viewEmp(152943L);
+		verify(customerService, times(1)).viewCustomer(152943L);
 		verifyNoMoreInteractions(customerService);
 		
 		customerMockMvc.perform(get("/v1/view/abcgd")).andExpect(status().isBadRequest());
-		verify(customerService, times(1)).viewEmp(152943L);
+		verify(customerService, times(1)).viewCustomer(152943L);
 		verifyNoMoreInteractions(customerService);
 		
 	}
@@ -77,7 +77,7 @@ public class ControllerTest {
 		Customer customer = new Customer(152943L, 109L, "fresher", "thoopalli_amarnath", "visa", "12/22", "private",
 				"direct", "direct", "helo", 2);
 
-		when(customerService.saveEmp(customer)).thenReturn(customer);
+		when(customerService.saveCustomer(customer)).thenReturn(customer);
 		
 		
 		customerMockMvc.perform(post("/v1/save")
@@ -96,7 +96,7 @@ public class ControllerTest {
 		Customer customer = new Customer(152943L, 109L, "fresher", "thoopalli_amarnath", "visa", "12/22", "private",
 				"direct", "direct", "helo", 2);
 
-		when(customerService.saveEmp(customer)).thenReturn(customer);
+		when(customerService.saveCustomer(customer)).thenReturn(customer);
 		
 		customerMockMvc.perform(delete("/delete/{accountId}",152943L))
 		.andExpect(status().isAccepted());

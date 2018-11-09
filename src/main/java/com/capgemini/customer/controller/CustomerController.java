@@ -40,7 +40,7 @@ public class CustomerController {
 
 		try {
 
-			Customer empObj = employeeService.saveEmp(employee);
+			Customer empObj = employeeService.saveCustomer(employee);
 			// This executes when the saving is successful
 			logger.info("The process is successful and returing the object back for review");
 			return new ResponseEntity<Customer>(empObj, HttpStatus.ACCEPTED);
@@ -62,7 +62,7 @@ public class CustomerController {
 		logger.info("The employee input is been fed to service layer from (controller-viewEmp)");
 		try {
 
-			Customer empObj = employeeService.viewEmp(accountId);
+			Customer empObj = employeeService.viewCustomer(accountId);
 
 			logger.info("The process is successful and returing the object back ");
 			return new ResponseEntity<Customer>(empObj, HttpStatus.FOUND);

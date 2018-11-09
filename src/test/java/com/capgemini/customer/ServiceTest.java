@@ -46,9 +46,9 @@ public class ServiceTest {
 		
 		when(customerRepository.save(customer)).thenReturn(customer);
 		
-		Customer customerAtService = customerService.saveEmp(customer);
+		Customer customerAtService = customerService.saveCustomer(customer);
 		try {
-		customerService.saveEmp(customer);
+		customerService.saveCustomer(customer);
 		}catch(Exception e) {
 			
 			 assertThat(e)

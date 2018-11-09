@@ -7,9 +7,9 @@ import com.capgemini.customer.exceptions.IncorrectInputException;
 
 public interface CustomerService {
 	
-	public Customer saveEmp(Customer employee) throws CustomerAlreadyExist;
+	public Customer saveCustomer(Customer customer) throws CustomerAlreadyExist;
 
-	public Customer viewEmp(Long empID) throws AccountNotFoundException,IncorrectInputException;
+	public Customer viewCustomer(Long empID) throws AccountNotFoundException,IncorrectInputException;
 
 	public void delCustomer(Long empID) throws AccountNotFoundException,IncorrectInputException;
 }

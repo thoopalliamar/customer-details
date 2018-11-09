@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
 	// This method checks for existence in database and gives out error else saves
 	// in database
 	@Override
-	public Customer saveEmp(Customer employee) throws CustomerAlreadyExist {
+	public Customer saveCustomer(Customer employee) throws CustomerAlreadyExist {
 
 		// Checking if the profile already exists in the datbase
 		if (employeeRepository.findByAccountID(employee.getAccountID()) == null) {
@@ -53,7 +53,7 @@ public class CustomerServiceImpl implements CustomerService {
 	// This methods checks for input data and gives out corresponding out catching
 	// the below exceptions
 	@Override
-	public Customer viewEmp(Long empID) throws AccountNotFoundException, IncorrectInputException {
+	public Customer viewCustomer(Long empID) throws AccountNotFoundException, IncorrectInputException {
 		logger.info("Entered viewEmp method in Service layer");
 
 		// Checking if the employeID is empty or not numeric
