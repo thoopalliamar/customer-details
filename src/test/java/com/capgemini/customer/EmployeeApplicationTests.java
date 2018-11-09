@@ -1,3 +1,4 @@
+package com.capgemini.customer;
 //package com.capgemini.employee;
 //
 //import org.junit.Test;
