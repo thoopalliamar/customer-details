@@ -1,7 +1,10 @@
 package com.capgemini.customer;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
@@ -44,11 +47,51 @@ public class ServiceTest {
 		when(customerRepository.save(customer)).thenReturn(customer);
 		
 		Customer customerAtService = customerService.saveEmp(customer);
+		try {
+		customerService.saveEmp(customer);
+		}catch(Exception e) {
+			
+			 assertThat(e)
+
+	         .hasMessage("There is no account with this ID");
+			
+			
+		}
 		
 		assertEquals("saving movie failed , the call to movieDAOImpl is returning false ,check this method", customer,
 				customerAtService);
 
 	}
+	
+	@Test
+	public void testDeleteCustomer() throws Exception{
+		Customer customer =new Customer ( 152943L, 109L,  "fresher",  "thoopalli_amarnath",  "visa", "12/22",  "private",  "direct",  "direct",  "helo", 2);
+		customerRepository.save(customer);
+		
+//		when(customerRepository.delete(customer)).thenReturn("deleted");
+		try {
+		 customerService.delCustomer(152978L);
+		}catch(Exception e) {
+		 
+		 assertThat(e)
+
+         .hasMessage("There is no account with this ID");
+		}
+		
+		try {
+			 customerService.delCustomer(152943L);
+			}catch(Exception e) {
+			 
+			 assertThat(e)
+
+	         .hasMessage("There is no account with this ID");
+			}
+		
+		 assertEquals(null, customerRepository.findByAccountID(152943L));//("jpaRepository creation fails: use @injectMocks on movieServicempl", customerRepository.findByAccountID(152943L));
+
+	}
+	
+	
 	
 
 }

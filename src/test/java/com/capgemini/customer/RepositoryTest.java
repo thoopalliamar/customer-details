@@ -41,6 +41,8 @@ public class RepositoryTest {
 		assertThat(customer.getBankType()).isEqualTo("direct");
 	}
 	
+
+	
 	
 
 }
