@@ -3,8 +3,8 @@ version: '2.1'
 services:
 
 #Governing microservices
-  api-gateway:
-   build: customer-details/
+  customer-details:
+   build: /
    depends_on:
     postgres:
      condition: service_healthy
