@@ -1,0 +1,45 @@
+version: '2.1'
+
+services:
+
+#Governing microservices
+  api-gateway:
+   build: customer-details/
+   depends_on:
+    postgres:
+     condition: service_healthy
+   restart: always
+   network_mode: "host"
+
+   hostname: localhost
+   ports:
+    - 8091:8091
+   healthcheck:
+    test: "exit 0"
+
+
+
+#MYSQL DATABASE
+  postgres:
+   image: postgres
+   ports:
+      - 5432:5432
+   container_name: postgres
+   mem_limit: 500m
+#   environment: 
+#    - MYSQL_ROOT_PASSWORD=root
+#    - MYSQL_DATABASE=juggler_db
+#    - MYSQL_PASSWORD=root
+#    - MYSQL_USER=root
+   network_mode: "host"
+   hostname: localhost
+   restart: always
+   healthcheck:
+    test: "exit 0"
+
+
+
+
+
+
+
