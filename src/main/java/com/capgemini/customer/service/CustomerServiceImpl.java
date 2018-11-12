@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.customer.domain.Customer;
+import com.capgemini.customer.domain.DeletedCustomer;
 import com.capgemini.customer.exceptions.AccountNotFoundException;
 import com.capgemini.customer.exceptions.CustomerAlreadyExist;
 import com.capgemini.customer.exceptions.IncorrectInputException;
 import com.capgemini.customer.repository.CustomerRepository;
+import com.capgemini.customer.repository.DeletedCustomerDataRepository;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -19,10 +21,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	// Auto wiring the EmployeeRepository to use those methods in the Service layer
 	CustomerRepository employeeRepository;
+	DeletedCustomerDataRepository deletedCustomerDataRepository;
 
 	@Autowired
-	public CustomerServiceImpl(CustomerRepository employeeRepository) {
+	public CustomerServiceImpl(CustomerRepository employeeRepository,DeletedCustomerDataRepository deletedCustomerDataRepository) {
 		this.employeeRepository = employeeRepository;
+		this.deletedCustomerDataRepository=deletedCustomerDataRepository;
 	}
 
 	// This method checks for existence in database and gives out error else saves
@@ -106,6 +110,10 @@ public class CustomerServiceImpl implements CustomerService {
 				// Here we touch the repository layer to get the data from the database
 				// retrivedEmployee is found and populated from database
 				Customer retrivedEmployee = employeeRepository.findByAccountID(empID);
+				DeletedCustomer delCustomer = new DeletedCustomer();
+				delCustomer.setAccountID(retrivedEmployee.getAccountID());
+				
+				deletedCustomerDataRepository.save(delCustomer);
 				employeeRepository.delete(retrivedEmployee);
 				logger.info("The account is been removed from the database");
 				// Checking got Delete_pending value for 1
